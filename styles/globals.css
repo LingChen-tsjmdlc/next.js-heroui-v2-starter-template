@@ -1,12 +1,66 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
-@plugin '../hero.ts';
+/* 亮色模式默认值 */
+:root {
+  --background: #fcfcfc;
+  --foreground: #141414;
+  /* HeroUI 兼容变量 */
+  --heroui-background: #fcfcfc;
+  --heroui-foreground: #141414;
+}
 
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+/* 暗色模式 - 反转背景和前景色 */
+.dark,
+html.dark {
+  --background: #141414;
+  --foreground: #fcfcfc;
+  /* HeroUI 兼容变量 */
+  --heroui-background: #141414;
+  --heroui-foreground: #fcfcfc;
+}
 
-@custom-variant dark (&:is(.dark *));
+/* 应用这些变量 */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
 
-@theme {
-    --font-sans: "font", sans-serif;
-    --font-mono: "monospace", monospace;
+/* 全局滚动条样式 - 细长版 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(156, 163, 175, 0.5);
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.8);
+}
+
+/* 暗色模式滚动条样式 */
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 85, 99, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(75, 85, 99, 0.8);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
