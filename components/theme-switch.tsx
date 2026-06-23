@@ -2,12 +2,12 @@
 
 import { FC, useEffect, useRef, useState } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
 import { flushSync } from "react-dom";
 import { Icon } from "@iconify/react";
+import { SwitchProps, useSwitch } from "@heroui/react";
 
 type Theme = "light" | "dark";
 

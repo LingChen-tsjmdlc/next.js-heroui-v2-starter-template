@@ -12,6 +12,7 @@
     "start": "next start",
     "start-alone": "node .next/standalone/server.js",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "move-win": "xcopy /e /i .next\\static .next\\standalone\\.next\\static && xcopy /e /i public\\icons .next\\standalone\\public\\icons",
     "move-linux": "rm -rf standalone && mkdir -p standalone/.next && cp -r .next/standalone/* standalone/ && cp -r .next/static standalone/.next/static && cp -r public/icons standalone/public/icons && cp package.json standalone/ && cp .env.production standalone/ || true"
   },
