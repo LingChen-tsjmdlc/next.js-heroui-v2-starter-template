@@ -13,12 +13,11 @@ import {
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
+  Kbd,
+  Link,
+  Input,
+  link as linkStyles,
 } from "@heroui/react";
-import { Button } from "@heroui/react";
-import { Kbd } from "@heroui/react";
-import { Link } from "@heroui/react";
-import { Input } from "@heroui/react";
-import { link as linkStyles } from "@heroui/react";
 import NextLink from "next/link";
 import clsx from "clsx";
 

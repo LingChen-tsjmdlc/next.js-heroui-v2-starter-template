@@ -277,15 +277,23 @@ export default function FloatingLines({
   const currentParallaxRef = useRef<Vector2>(new Vector2(0, 0));
 
   const getLineCount = (waveType: "top" | "middle" | "bottom"): number => {
-    if (typeof lineCount === "number") return lineCount;
-    if (!enabledWaves.includes(waveType)) return 0;
+    if (typeof lineCount === "number") {
+      return lineCount;
+    }
+    if (!enabledWaves.includes(waveType)) {
+      return 0;
+    }
     const index = enabledWaves.indexOf(waveType);
     return lineCount[index] ?? 6;
   };
 
   const getLineDistance = (waveType: "top" | "middle" | "bottom"): number => {
-    if (typeof lineDistance === "number") return lineDistance;
-    if (!enabledWaves.includes(waveType)) return 0.1;
+    if (typeof lineDistance === "number") {
+      return lineDistance;
+    }
+    if (!enabledWaves.includes(waveType)) {
+      return 0.1;
+    }
     const index = enabledWaves.indexOf(waveType);
     return lineDistance[index] ?? 0.1;
   };
@@ -304,7 +312,9 @@ export default function FloatingLines({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) {
+      return;
+    }
 
     let active = true;
 
@@ -397,7 +407,9 @@ export default function FloatingLines({
     const clock = new Clock();
 
     const setSize = () => {
-      if (!active) return;
+      if (!active) {
+        return;
+      }
       const width = container.clientWidth || 1;
       const height = container.clientHeight || 1;
 
@@ -413,12 +425,16 @@ export default function FloatingLines({
     const ro =
       typeof ResizeObserver !== "undefined"
         ? new ResizeObserver(() => {
-            if (!active) return;
+            if (!active) {
+              return;
+            }
             setSize();
           })
         : null;
 
-    if (ro) ro.observe(container);
+    if (ro) {
+      ro.observe(container);
+    }
 
     const handlePointerMove = (event: PointerEvent) => {
       const rect = renderer.domElement.getBoundingClientRect();
@@ -449,7 +465,9 @@ export default function FloatingLines({
 
     let raf = 0;
     const renderLoop = () => {
-      if (!active) return;
+      if (!active) {
+        return;
+      }
 
       uniforms.iTime.value = clock.getElapsedTime();
 
@@ -477,7 +495,9 @@ export default function FloatingLines({
 
       cancelAnimationFrame(raf);
 
-      if (ro) ro.disconnect();
+      if (ro) {
+        ro.disconnect();
+      }
 
       if (interactive) {
         renderer.domElement.removeEventListener("pointermove", handlePointerMove);

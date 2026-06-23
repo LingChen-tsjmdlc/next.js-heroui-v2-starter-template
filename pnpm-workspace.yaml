@@ -1,0 +1,11 @@
+# pnpm 依赖白名单（含原生构建脚本的包，必须放行，否则 next build 会失败）。
+#
+# 跨版本兼容策略（不要随意删除任何一处）：
+#   - pnpm v9：默认放行所有 build 脚本，下面任何字段都不会读取，但保留 package.json 中的 onlyBuiltDependencies 不影响。
+#   - pnpm v10：读取 package.json 中的 pnpm.onlyBuiltDependencies。
+#   - pnpm v11：读取本文件的 allowBuilds（pnpm CLI 的 approve-builds 会自动写入此字段）。
+allowBuilds:
+  "@heroui/shared-utils": true
+  "@tailwindcss/oxide": true
+  sharp: true
+  unrs-resolver: true

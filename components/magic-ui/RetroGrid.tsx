@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import type { CSSProperties, HTMLAttributes } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 

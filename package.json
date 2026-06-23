@@ -4,7 +4,7 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "prepare": "npx husky",
+    "prepare": "husky",
     "dev": "next dev --turbopack",
     "build": "next build",
     "build-win": "next build && npm run move-win",
@@ -12,7 +12,6 @@
     "start": "next start",
     "start-alone": "node .next/standalone/server.js",
     "lint": "eslint",
-    "postinstall": "npx husky init",
     "move-win": "xcopy /e /i .next\\static .next\\standalone\\.next\\static && xcopy /e /i public\\icons .next\\standalone\\public\\icons",
     "move-linux": "rm -rf standalone && mkdir -p standalone/.next && cp -r .next/standalone/* standalone/ && cp -r .next/static standalone/.next/static && cp -r public/icons standalone/public/icons && cp package.json standalone/ && cp .env.production standalone/ || true"
   },
@@ -51,6 +50,8 @@
     "@typescript-eslint/parser": "8.34.1",
     "eslint": "9.25.1",
     "eslint-config-prettier": "10.1.5",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-node": "11.1.0",
@@ -59,10 +60,23 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-unused-imports": "4.1.4",
     "globals": "16.0.0",
+    "husky": "9.1.7",
     "postcss": "8.5.6",
     "prettier": "3.5.3",
     "tailwind-variants": "3.2.2",
     "tailwindcss": "4.1.11",
     "typescript": "5.6.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@tailwindcss/oxide",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

@@ -135,7 +135,9 @@ export default function IndexPage() {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    if (!heroRef.current) return;
+    if (!heroRef.current) {
+      return;
+    }
 
     // 注册 GSAP 插件
     gsap.registerPlugin(ScrollTrigger);
